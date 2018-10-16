@@ -59,8 +59,6 @@ function updateJson(json_dump = {}){
   if (!json_dump.uniqueId) {
     if (isContainerIdToDo(json_dump.container.id)) {
       todoList = [];
-      console.log('here');
-      console.log(json_dump.container.id);
       saveLocally(json_dump.container.id, todoList);
       toggleDisplayButton(clearToDoButtonId, todoList);
     } else{

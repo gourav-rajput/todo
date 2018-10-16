@@ -3,41 +3,132 @@
 <head>
   <title>My App</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style>
+    .login-wrapper{
+      display: flex;
+      height:100vh;
+      width:100vw;
+      justify-content: center;
+      flex-direction: column;
+      background: #fff;
+    }
+    .email-input{
+      height:60px;
+      border:none;
+      box-shadow:none;
+      background: #f1f1f1;
+      font-size:24px;
+      font-weight: 400;
+      margin-top: 50px;
+      border:2px solid #e9e9e9;
+      border-radius: 30px;
+      padding-left: 25px;
+    }
+
+    .primary{
+      color:#fc6549;
+    }
+
+    .lead{
+      font-weight: 400;
+      color:#777;
+    }
+
+    .btn-proceed{
+      height: 40px;
+      padding: 8px 20px;
+      margin-top: 20px;
+      border-radius: 30px;
+      background-image: none;
+      width: 200px;
+      background: #fc6549;
+      border-color: #fc6549;
+      color:#fff;
+    }
+    .btn-proceed:hover{
+      background: #fc6549;
+      border-color: #fc6549;
+      color:#fff;
+    }
+
+    .main-container{
+      min-height: 100vh;
+    }
+
+    .q-wrapper{
+      background: #f7f7f7;
+      padding: 40px;
+    }
+
+    .time{
+      color:#777;
+    }
+
+    .media{
+      margin-left:15px;
+    }
+
+
+  </style>
 </head>
 <body>
-  <section class="search-and-input-section">
-    <div class="form-group" style="margin-bottom: 50px">
-      <input type="text" name="search-input" id="search-input" placeholder="Enter To Search A task">
-    </div>
-    <div class="form-group">
-      <input type="text" name="to-do-input" id="to-do-input" placeholder="Enter To Do Task">
-      <button id="to-do-add-button">Add</button>
+
+  <div class="main-container">
+  <section class="container login-wrapper">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="login text-center">
+        <h1 class="primary">Inclov Questionera</h1>
+        <h4 class="lead">Enter Email to login to Inclov Questionera</h4>
+        <div class="form-group">
+          <input class="form-control email-input" id="email-input" type="email" placeholder="Enter Email">
+          <button class="btn btn-default btn-proceed" onclick="getEmail()">Proceed</button>
+        </div>
+      </div>
     </div>
   </section>
+</div>
 
-  <section class="to-do-list-section">
-    <div><p>To Do List</p></div><button style="background-color: #000; color: #fff" id="clear-to-do-list">Clear ToDo LIST</button>
-    <div class="to-do-list">
-      <ul id="to-do-item-container" ondrop="dropElementInToDo(event)" ondragover="allowDrop(event)">
-        
-      </ul>
-    </div>
-  </section>
+  <script>
 
-  <section class="completed-list-container">
-    <div><p>Completed List</p></div><button style="background-color: #000; color: #fff" id="clear-completed-list">Clear Completed List</button>
-    <div class="completed-list">
-      <ul id="completed-list-container" ondrop="dropElementInComplete(event)" ondragover="allowDrop(event)">
-       
-      </ul>
-    </div>
-  </section>
+  function showCompletedNoData(){
+    let request = new XMLHttpRequest();
+    request.open('GET', "./list.html", true);
+    request.onload = function() {
+      let data = request.responseText;
+      $('.main-container').html(data);
+      $('.main-container').css('background', '#f7f7f7');
+    }
+    request.send();
+  }
 
+
+    function getEmail(){
+      let email = $('#email-input').val();
+      if(!email){
+        alert('Please enter your email');
+      } else{
+        localStorage.setItem('email', email);
+        $('.main-container').html('');
+        showCompletedNoData();
+      }
+    }
+
+
+  </script>
+  <script src="./js/bootstrap.min.js"></script>
   <script src="./js/util.js"></script>
   <script src="./js/drag.js"></script>
   <script src="./js/storage.js"></script>
   <script src="./js/search.js"></script>
   <script src="./js/main.js"></script>
-  
+
 </body>
 </html>
