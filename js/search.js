@@ -10,7 +10,7 @@ function checkStringIncludes(item1, item2, searchType = ""){
 function searchList(value){
   let itemList = liList;
   for(let i = 0; i < itemList.length; i++){
-    if (checkStringIncludes(itemList[i].getElementsByClassName('left')[0].innerText, value)) {
+    if (checkStringIncludes(itemList[i].getElementsByClassName('float-left')[0].innerText, value)) {
       itemList[i].style.display = 'block';
       itemList[i].style.background = 'yellow';
     } else {
@@ -22,7 +22,7 @@ function searchList(value){
 function isAlreadyPresent(value){
   let itemList = liList;
   for(let i = 0; i < itemList.length; i++){
-    if (checkStringIncludes(itemList[i].getElementsByClassName('left')[0].innerText, value, "exactSearch")) {
+    if (checkStringIncludes(itemList[i].getElementsByClassName('float-left')[0].innerText, value, "exactSearch")) {
       return true;
     }
   }

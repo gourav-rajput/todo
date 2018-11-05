@@ -6,7 +6,7 @@
 
 // }
 
-const componentsPath = "../components";
+const componentsPath = "components";
 
 function validateInput(val){
   return val !== '' && val !== ' ' && val !== null && val !== undefined;
@@ -37,17 +37,17 @@ function generateButton(type = "", dump_json = ""){
   switch(type){
     case 'complete' :
       button.innerText = "Completed";
-      button.setAttribute('class','complete-button');
+      button.setAttribute('class','btn btn-success btn-xs complete-button');
       button.addEventListener('click', toggleComplete.bind(this, dump_json));
       break;
     case 'delete' :
       button.innerText = "Delete";
-      button.setAttribute('class','delete-button');
+      button.setAttribute('class','btn btn-danger btn-xs delete-button');
       button.addEventListener('click', deleteItem.bind(this, dump_json.uniqueId, dump_json.container));
       break;
     case 'not-complete' :
       button.innerText = "Not Complete";
-      button.setAttribute('class','not-complete-button');
+      button.setAttribute('class','btn btn-warning btn-xs not-complete-button');
       button.addEventListener('click', toggleComplete.bind(this, dump_json));
       break;
     default:

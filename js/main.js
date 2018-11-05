@@ -34,10 +34,11 @@ function addItem(itemValue, container, uniqueId){
   let deleteButton = generateButton("delete", values);
 
   let liItem = generateHTMLElement("li", "", uniqueId, "");
+  liItem.setAttribute('class', "list-group-item");
   liItem.setAttribute('draggable', true);
   liItem.ondragstart = dragElement;
-  let leftDiv = generateHTMLElement("div", "left", "", itemValue);
-  let rightDiv = generateHTMLElement("div", "right", "", "");
+  let leftDiv = generateHTMLElement("div", "float-left", "", itemValue);
+  let rightDiv = generateHTMLElement("div", "float-right", "", "");
   rightDiv.append(deleteButton);
 
   if (isContainerIdToDo(values.containerId)) {
