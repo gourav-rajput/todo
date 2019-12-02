@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const todoListContainerId = 'to-do-item-container';
 const completedListContainerId = 'completed-list-container';
 const todoContainer = getElementRef(todoListContainerId, 'id');
@@ -361,4 +360,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
->>>>>>> 52205730c755206164f627639b6eff104020a6ed
