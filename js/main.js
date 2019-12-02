@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
-=======
+
 const todoListContainerId = 'to-do-item-container';
 const completedListContainerId = 'completed-list-container';
 const todoContainer = getElementRef(todoListContainerId, 'id');
